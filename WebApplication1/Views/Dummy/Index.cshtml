@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+
+}
+
+@Html.Action("RenderProduct")
+
+
+
+<script>$("button").click(function (e) {
+        var id = $(this).attr("id");
+        $.ajax({
+            url:  "RenderProductByCatId",
+            data: { CatId: id },
+            success: function (response) {
+                $("div.container").html(response);
+            }
+        });
+    });</script>
+
+<!-- Pagination -->
+@*<div class="flex-c-m flex-w w-full p-t-38">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>*@
